@@ -1,6 +1,4 @@
 [
- {"name": "ver db", "database": "mongo", "description": "test2", "query": "db.getName()"},{"name": "all", "database": "mongo", "description": "test", "query": "db.escuchas.find()"}]
-[
   {
     "name": "ver db",
     "database": "mongo",
