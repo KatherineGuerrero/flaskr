@@ -1,10 +1,10 @@
 [
-{"name": "ver db",
- "database": "genuino",
+{ "name": "verDb",
+ "database": "mongo",
  "description": "test2",
- "query": "getName()"},
-{"name": "all",
- "database": "genuino",
+ "query": "getName()" },
+{ "name": "all",
+ "database": "mongo",
  "description": "test",
- "query": "escuchas.find()"}
+ "query": "escuchas.find()" }
   ]
