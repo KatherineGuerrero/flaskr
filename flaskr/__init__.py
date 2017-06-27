@@ -64,7 +64,7 @@ def mongo():
 @crossdomain(origin='*')
 def api_post():
     if request.method == 'POST':
-        if flask.request.headers['content-Type'] == 'application/json':
+        if flask.request.headers['Content-Type'] == 'application/json':
             info = request.json
             return 'funciono!:{}'.format(info)
         else:
