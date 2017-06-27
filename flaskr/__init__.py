@@ -61,7 +61,7 @@ def mongo():
         return "ok"
 
 
-@app.route("/api", methods=['POST'])
+@app.route("/api", methods=['POST', 'OPTIONS'])
 @cross_origin(origin='*', headers=['Content-Type','Authorization'])
 def api_post():
     if request.method == 'POST':
@@ -70,6 +70,9 @@ def api_post():
             return 'funciono!:{}'.format(info)
         else:
             return '404 not found D:'
+
+    elif request.method == 'OPTIONS':
+        return '200 ok'
 
 
 @app.route("/postgres")
