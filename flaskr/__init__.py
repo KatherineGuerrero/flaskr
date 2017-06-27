@@ -8,6 +8,7 @@ from bson import json_util
 from pymongo import MongoClient
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
+from flask.ext.cors import CORS, cross_origin
 
 
 def create_app():
@@ -61,7 +62,7 @@ def mongo():
 
 
 @app.route("/api", methods=['POST'])
-@crossdomain(origin='*')
+@cross_origin(origin='*')
 def api_post():
     if request.method == 'POST':
         if flask.request.headers['Content-Type'] == 'application/json':
