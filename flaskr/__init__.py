@@ -64,7 +64,7 @@ def mongo():
 def api_post():
     if flask.request.headers['content-Type'] == 'application/json':
         info = request.json
-        return info
+        return 'funciono!:'.format(info)
     else:
         return '404 not found D:'
 
