@@ -62,7 +62,7 @@ def mongo():
 
 
 @app.route("/api", methods=['POST'])
-@cross_origin(origin='*')
+@cross_origin(origin='*', headers=['Content-Type','Authorization'])
 def api_post():
     if request.method == 'POST':
         if flask.request.headers['Content-Type'] == 'application/json':
@@ -70,14 +70,6 @@ def api_post():
             return 'funciono!:{}'.format(info)
         else:
             return '404 not found D:'
-
-
-@app.after_request  
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    return response
 
 
 @app.route("/postgres")
@@ -88,6 +80,7 @@ def postgres():
     results = [[a for a in result] for result in cursor]
     print(results)
     return render_template('postgres.html', results=results)
+
 
 @app.route("/example")
 def example():
