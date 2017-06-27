@@ -59,6 +59,13 @@ def mongo():
     else:
         return "ok"
 
+
+@app.route("/api", methods=['POST'])
+def api_post():
+    if flask.request.headers['content-Type'] == 'application/json':
+        info = request.json
+
+
 @app.route("/postgres")
 def postgres():
     query = request.args.get("query")
