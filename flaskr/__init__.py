@@ -61,14 +61,15 @@ def mongo():
 
 
 @app.route("/api", methods=['POST'])
+@crossdomain(origin='http://bases.ing.puc.cl')
 def api_post():
     if request.method == 'POST':
         if flask.request.headers['content-Type'] == 'application/json':
             info = request.json
-            return 'funciono!:'.format(info)
+            return 'funciono!:{}'.format(info)
         else:
             return '404 not found D:'
-        
+
 
 @app.route("/postgres")
 def postgres():
