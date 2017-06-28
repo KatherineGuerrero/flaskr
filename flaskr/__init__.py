@@ -65,8 +65,8 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/c1/<fecha>", methods=['GET', 'POST'])
-@cross_origin(origin='*', headers=['Content-Type','Authorization'])
+@app.route("/api/c1/<int:fecha>", methods=['GET', 'POST'])
+@cross_origin(origin='*')
 def api_post(fecha):
     if request.method == 'GET':
         prueba = jsonify({'date': '11-11-1111'})
