@@ -104,7 +104,7 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/date/<fecha>")
+@app.route("/api/date/<fecha>", methods=['GET', 'POST'])
 def api_post(fecha):
     return json.dumps({'date': fecha})
 
