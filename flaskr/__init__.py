@@ -7,7 +7,7 @@ import json
 from bson import json_util
 from pymongo import MongoClient
 from flask import Flask, request, session, g, redirect, url_for, abort, \
-     render_template, flash, current_app, make_response
+     render_template, flash, current_app, make_response, jsonify
 from datetime import timedelta
 from functools import update_wrapper
 
@@ -106,10 +106,11 @@ def mongo():
 
 @app.route('/date', strict_slashes=False)
 @app.route("/date/<fecha>", methods=['GET', 'POST'])
-@crossdomain(origin='*')
 def api_post(fecha):
     if request.method == 'GET':
-        return json.dumps({'date': fecha})
+        response = jsonify({'some': 'data'})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
 
 @app.route("/postgres")
