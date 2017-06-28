@@ -106,7 +106,8 @@ def mongo():
 
 @app.route("/api/date/<fecha>", methods=['GET', 'POST'])
 def api_post(fecha):
-    return json.dumps({'date': fecha})
+    if request.method == 'GET':
+        return json.dumps({'date': fecha})
 
 
 @app.route("/postgres")
