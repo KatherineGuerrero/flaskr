@@ -104,9 +104,8 @@ def mongo():
         return "ok"
 
 
-@app.route('/date', strict_slashes=False)
-@app.route("/date/<fecha>", methods=['GET', 'POST'])
-def api_post(fecha):
+@app.route("/date", methods=['GET', 'POST'])
+def api_post():
     if request.method == 'GET':
         response = jsonify({'some': 'data'})
         response.headers.add('Access-Control-Allow-Origin', '*')
