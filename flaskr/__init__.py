@@ -8,7 +8,7 @@ from bson import json_util
 from pymongo import MongoClient
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, current_app, make_response, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from datetime import timedelta
 from functools import update_wrapper
 
@@ -65,13 +65,17 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/c1", methods=['GET', 'POST'])
-def api_post():
+@app.route("/api/c1/<fecha>", methods=['GET', 'POST'])
+@cross_origin(origin='*', headers=['Content-Type','Authorization'])
+def api_post(fecha):
     if request.method == 'GET':
         prueba = jsonify({'date': '11-11-1111'})
         return 'Works'
     elif request.method == 'POST':
         return 'Works'
+
+    else:
+        return jsonify({'date': fecha})
 
 
 @app.route("/postgres")
