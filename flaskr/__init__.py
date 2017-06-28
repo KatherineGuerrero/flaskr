@@ -104,8 +104,8 @@ def mongo():
         return "ok"
 
 
-@app.route("/api", methods=['POST', 'OPTIONS'])
-@crossdomain(origin="*", headers=['Content-Type'])
+@app.route("/api", methods=['POST'])
+@crossdomain(origin="*", headers=['Content-Type'], methods=['POST'])
 def api_post():
     if request.method == 'POST':
         if request.headers['Content-Type'] == 'application/json':
