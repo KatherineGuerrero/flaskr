@@ -65,17 +65,10 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/c1/<int:fecha>", methods=['GET', 'POST'])
+@app.route("/api/c1/<string:fecha>", methods=['GET', 'POST'])
 @cross_origin(origin='*')
 def api_post(fecha):
-    if request.method == 'GET':
-        prueba = jsonify({'date': '11-11-1111'})
-        return 'Works'
-    elif request.method == 'POST':
-        return 'Works'
-
-    else:
-        return jsonify({'date': fecha})
+    return fecha
 
 
 @app.route("/postgres")
