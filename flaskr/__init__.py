@@ -104,18 +104,9 @@ def mongo():
         return "ok"
 
 
-@app.route("/api", methods=['POST'])
-@crossdomain(origin="*", headers=['Content-Type'], methods=['POST'])
-def api_post():
-    if request.method == 'POST':
-        if request.headers['Content-Type'] == 'application/json':
-            info = request.json
-            return 'funciona!!'
-        else:
-            return '404 not found D:'
-
-    elif request.method == 'OPTIONS':
-        return '200 ok'
+@app.route("/api/date/<fecha>")
+def api_post(fecha):
+    return json.dumps({'date': fecha})
 
 
 @app.route("/postgres")
