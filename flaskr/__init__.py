@@ -65,7 +65,7 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/c1/<string:fecha>", methods=['GET', 'POST'])
+@app.route("/api/<string:fecha>")
 @cross_origin(origin='*')
 def api_post(fecha):
     return fecha
