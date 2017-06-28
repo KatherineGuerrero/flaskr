@@ -17,7 +17,6 @@ def create_app():
     return app
 
 app = create_app()
-app.url_map.strict_slashes = False
 
 # REPLACE WITH YOUR DATABASE NAME
 MONGODATABASE = "genuino"
@@ -105,6 +104,7 @@ def mongo():
         return "ok"
 
 
+@app.route('/date', strict_slashes=False)
 @app.route("/date/<fecha>", methods=['GET', 'POST'])
 def api_post(fecha):
     if request.method == 'GET':
