@@ -105,11 +105,14 @@ def mongo():
 
 
 @app.route("/date", methods=['GET', 'POST'])
+@crossdomain(origin='*', methods=['GET', 'POST'])
 def api_post():
     if request.method == 'GET':
         response = jsonify({'some': 'data'})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
+    elif request.method == 'POST':
+        return 'lala'
 
 
 @app.route("/postgres")
