@@ -110,7 +110,7 @@ def api_post():
     if request.method == 'POST':
         if request.headers['Content-Type'] == 'application/json':
             info = request.json
-            return 'funciono!:{}'.format(info)
+            return info
         else:
             return '404 not found D:'
 
