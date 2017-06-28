@@ -106,6 +106,7 @@ def mongo():
 
 @app.route('/date', strict_slashes=False)
 @app.route("/date/<fecha>", methods=['GET', 'POST'])
+@crossdomain(origin='*')
 def api_post(fecha):
     if request.method == 'GET':
         return json.dumps({'date': fecha})
