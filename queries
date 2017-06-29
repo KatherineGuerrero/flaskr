@@ -6,5 +6,9 @@
 { "name": "all",
  "database": "mongo",
  "description": "test",
- "query": "escuchas.find()" }
+ "query": "escuchas.find()" },
+{ "name": "consulta1",
+ "database": "mongo",
+ "description": "test1",
+ "query": "db.escuchas.find({'fecha': '2016-09-12'}, {'numero': 1})" }
   ]
