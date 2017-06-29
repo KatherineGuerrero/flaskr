@@ -78,8 +78,8 @@ def api(consulta, datos1):
         return json_util.dumps(resultado, sort_keys=True, indent=4)
 
     elif consulta == '2':
-        numero, limite = datos1.split('?')
-        fecha = numero + limite
+        separados = datos1.split('?')
+        numero = separados[0]
         consultilla = escuchas.find({'numero': numero})
         return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
