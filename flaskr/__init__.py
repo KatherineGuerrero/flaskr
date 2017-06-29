@@ -68,31 +68,30 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/<consulta>/<datos1>")
+@app.route("/api/1/<datos1>")
 @cross_origin(origin='*')
-def api(consulta, datos1):
-    if consulta == '1':
-        fecha = datos1
-        query = "escuchas.find({'fecha': '" + fecha + "'}, {'numero': 1})"
-        resultado = eval('mongodb.' + query)
-        return json_util.dumps(resultado, sort_keys=True, indent=4)
-
-    elif consulta == '2':
-        separados = datos1.split('_')
-        numero = separados[0]
-        limite = separados[1]
-        consultilla = escuchas.find({'numero': numero}).sort([['fecha', DESCENDING]])
-        return json_util.dumps(consultilla, sort_keys=True, indent=4)
+def api_1(datos1):
+    fecha = datos1
+    query = "escuchas.find({'fecha': '" + fecha + "'}, {'numero': 1})"
+    resultado = eval('mongodb.' + query)
+    return json_util.dumps(resultado, sort_keys=True, indent=4)
 
 
-    elif consulta == '3':
-        clave = datos1
-        fecha = clave
+@app.route("/api/2/<numero>/<limite>")
+@cross_origin(origin='*')
+def api_2(numero, limite):
+    consultilla = escuchas.find({'numero': numero}).sort([['fecha', DESCENDING]]).limit(int(limite))
+    return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
-    else:
-        return 'Not Implemented'
-    coso = jsonify({'date': fecha})
-    return coso
+    #
+    # elif consulta == '3':
+    #     clave = datos1
+    #     fecha = clave
+    #
+    # else:
+    #     return 'Not Implemented'
+    # coso = jsonify({'date': fecha})
+    # return coso
 
 @app.route("/postgres")
 def postgres():
