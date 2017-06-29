@@ -27,6 +27,8 @@ MONGOSERVER = "localhost"
 MONGOPORT = 27017
 client = MongoClient(MONGOSERVER, MONGOPORT)
 mongodb = client[MONGODATABASE]
+db2 = client.genuino
+escuchas = db2.escuchas
 
 ''' # Uncomment for postgres connection
 # REPLACE WITH YOUR DATABASE NAME, USER AND PASS
@@ -78,7 +80,7 @@ def api(consulta, datos1):
     elif consulta == '2':
         numero, limite = datos1.split('?')
         fecha = numero + limite
-        consultilla = mongodb.escuchas.find({'numero': numero}, {'numero': 1, 'contenido': 1})
+        consultilla = escuchas.find({'numero': numero})
         return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
