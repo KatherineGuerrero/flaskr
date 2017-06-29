@@ -80,7 +80,8 @@ def api(consulta, datos1):
     elif consulta == '2':
         separados = datos1.split('_')
         numero = separados[0]
-        consultilla = escuchas.find({'numero': numero}).sort([{'fecha': DESCENDING}])
+        limite = separados[1]
+        consultilla = escuchas.find({'numero': numero}).sort({'fecha': DESCENDING})
         return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
