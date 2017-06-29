@@ -83,15 +83,13 @@ def api_2(numero, limite):
     consultilla = escuchas.find({'numero': numero}).sort([['fecha', DESCENDING]]).limit(int(limite))
     return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
-    #
-    # elif consulta == '3':
-    #     clave = datos1
-    #     fecha = clave
-    #
-    # else:
-    #     return 'Not Implemented'
-    # coso = jsonify({'date': fecha})
-    # return coso
+
+@app.route("/api/3/<clave>")
+@cross_origin(origin='*')
+def api_3(clave):
+    consultilla = escuchas.find({'contenido': {'$regex': '/'+clave+'$/'}})
+    return json_util.dumps(consultilla, sort_keys=True, indent=4)
+
 
 @app.route("/postgres")
 def postgres():
