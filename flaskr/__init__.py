@@ -18,7 +18,7 @@ def create_app():
     return app
 
 app = create_app()
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+# cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 # REPLACE WITH YOUR DATABASE NAME
