@@ -14,7 +14,7 @@
 { "name": "consulta2",
  "database": "mongo",
  "description": "test2",
- "query": "escuchas.find({'numero': '42638939'},{'numero' : 1, 'contenido' : 1, 'fecha' : 1}).sort({'fecha': 1}).limit(2)" },
+ "query": "escuchas.find({'numero': '42638939'},{'numero' : 1, 'contenido' : 1, 'fecha' : 1})" },
 { "name": "consulta3",
  "database": "mongo",
  "description": "test3",
