@@ -15,7 +15,7 @@
  "database": "mongo",
  "description": "test2",
  "query": "escuchas.find({'numero': '42638939'},{'numero' : 1, contenido' : 1, 'fecha' : 1}).sort({'fecha': 1}).limit(2)" },
- { "name": "consulta3",
+{ "name": "consulta3",
  "database": "mongo",
  "description": "test3",
  "query": "escuchas.find({'contenido':{$regex:"salu5"}},{'numero':1, 'fecha':1, 'ciudad':1, 'contenido':1})" }
