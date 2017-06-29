@@ -69,7 +69,8 @@ def mongo():
 @app.route("/post")
 def show_post():
     # show the post with the given id, the id is an integer
-    return render_template('file.html')
+    # return render_template('file.html')
+    return redirect("http://www.google.com")
 
 @app.route("/postgres")
 def postgres():
