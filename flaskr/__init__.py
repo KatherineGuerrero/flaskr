@@ -78,7 +78,7 @@ def api(consulta, datos1):
         return json_util.dumps(resultado, sort_keys=True, indent=4)
 
     elif consulta == '2':
-        separados = datos1.split('?')
+        separados = datos1.split('_')
         return jsonify({'wea': separados})
         # numero, limite = separados[0], separados[1]
         # consultilla = escuchas.find({'numero': numero}).sort([{'fecha': DESCENDING}])
