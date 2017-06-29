@@ -5,7 +5,7 @@ import sys
 # import psycopg2
 import json
 from bson import json_util
-from pymongo import MongoClient
+from pymongo import MongoClient, DESCENDING
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, current_app, make_response, jsonify
 from flask_cors import CORS, cross_origin
@@ -81,7 +81,7 @@ def api(consulta, datos1):
         separados = datos1.split('?')
         numero = separados[0]
         limite = separados[1]
-        consultilla = escuchas.find({'numero': numero}, {'numero': 1, 'contenido': 1})
+        consultilla = escuchas.find({'numero': numero}).sort([("fecha", DESCENDING)])
         return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
