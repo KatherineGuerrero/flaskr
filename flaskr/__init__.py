@@ -5,7 +5,7 @@ import sys
 # import psycopg2
 import json
 from bson import json_util
-from pymongo import MongoClient, DESCENDING
+from pymongo import MongoClient, ASCENDING
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, current_app, make_response, jsonify
 from flask_cors import CORS, cross_origin
@@ -79,7 +79,7 @@ def api_1(datos1):
 @app.route("/api/2/<numero>/<limite>")
 @cross_origin(origin='*')
 def api_2(numero, limite):
-    consultilla = escuchas.find({'numero': numero}).sort([['fecha', DESCENDING]]).limit(int(limite))
+    consultilla = escuchas.find({'numero': numero}, {'contenido': 1}).sort([['fecha', ASCENDING]]).limit(int(limite))
     return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
