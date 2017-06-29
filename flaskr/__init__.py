@@ -79,7 +79,7 @@ def api_1(datos1):
 @app.route("/api/2/<numero>/<limite>")
 @cross_origin(origin='*')
 def api_2(numero, limite):
-    consultilla = escuchas.find({'numero': numero}, {'contenido': 1}).sort([['fecha', ASCENDING]]).limit(int(limite))
+    consultilla = escuchas.find({'numero': numero}, {'contenido': 1, 'fecha': 1}).sort([['fecha', ASCENDING]]).limit(int(limite))
     return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
