@@ -18,7 +18,7 @@ def create_app():
     return app
 
 app = create_app()
-# cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 # REPLACE WITH YOUR DATABASE NAME
@@ -60,15 +60,31 @@ def mongo():
     results = eval('mongodb.' + query)
     results = json_util.dumps(results, sort_keys=True, indent=4)
 
-    return results
-    # if "find" in query:
-    #     return render_template('mongo.html', results=results)
-    # else:
-    #     return "ok"
+    if "find" in query:
+        return render_template('mongo.html', results=results)
+    else:
+        return "ok"
 
 
-@app.route("/api/c1/<fecha>")
-def show_post(fecha):
+@app.route("/api/obligado/<consulta>/<datos1>")
+@cross_origin(origin='*')
+def api(consulta, datos1):
+    if consulta == '1':
+        fecha = datos1
+        query = "escuchas.find({'fecha': '" + fecha + "'}, {'numero': 1})"
+        resultado = eval('mongodb.' + query)
+        return jsonify(resultado)
+
+    elif consulta == '2':
+        numero, limite = datos1.split('?')
+        fecha = numero + limite
+
+    elif consulta == '3':
+        clave = datos1
+        fecha = clave
+
+    else:
+        return 'Not Implemented'
     coso = jsonify({'date': fecha})
     return coso
 
