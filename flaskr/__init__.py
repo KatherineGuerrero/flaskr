@@ -81,9 +81,8 @@ def api(consulta, datos1):
         separados = datos1.split('_')
         numero = separados[0]
         limite = separados[1]
-        return jsonify({'numero': numero, 'limite': limite})
-        # consultilla = escuchas.find({'numero': numero}).sort({'fecha': DESCENDING})
-        # return json_util.dumps(consultilla, sort_keys=True, indent=4)
+        consultilla = escuchas.find({'numero': numero}).sort({'fecha': -1})
+        return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
     elif consulta == '3':
