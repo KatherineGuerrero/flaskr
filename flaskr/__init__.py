@@ -64,13 +64,11 @@ def mongo():
     else:
         return "ok"
 
-#@app.route("/post/<int:post_id>')
 
-@app.route("/post")
-def show_post():
-    # show the post with the given id, the id is an integer
-    # return render_template('file.html')
-    return "Hello world"
+@app.route("/api/c1/<fecha>")
+def show_post(fecha):
+    coso = jsonify({'date': fecha})
+    return coso
 
 @app.route("/postgres")
 def postgres():
