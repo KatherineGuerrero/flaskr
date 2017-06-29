@@ -73,7 +73,7 @@ def api(consulta, datos1):
         fecha = datos1
         query = "escuchas.find({'fecha': '" + fecha + "'}, {'numero': 1})"
         resultado = eval('mongodb.' + query)
-        return jsonify(resultado)
+        return json_util.dumps(resultado, sort_keys=True, indent=4)
 
     elif consulta == '2':
         numero, limite = datos1.split('?')
