@@ -68,9 +68,9 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/<consulta>/<datos1>/<datos2>")
+@app.route("/api/<consulta>/<datos1>")
 @cross_origin(origin='*')
-def api(consulta, datos1, datos2):
+def api(consulta, datos1):
     if consulta == '1':
         fecha = datos1
         query = "escuchas.find({'fecha': '" + fecha + "'}, {'numero': 1})"
@@ -79,7 +79,7 @@ def api(consulta, datos1, datos2):
 
     elif consulta == '2':
         separados = datos1.split('?')
-        numero = separados[0]
+        numero, limite = separados[0], separados[1]
         consultilla = escuchas.find({'numero': numero}).sort([{'fecha': DESCENDING}])
         return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
