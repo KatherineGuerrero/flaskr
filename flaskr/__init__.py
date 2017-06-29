@@ -72,9 +72,8 @@ def mongo():
 @cross_origin(origin='*')
 def api_1(datos1):
     fecha = datos1
-    query = "escuchas.find({'fecha': '" + fecha + "'}, {'numero': 1})"
-    resultado = eval('mongodb.' + query)
-    return json_util.dumps(resultado, sort_keys=True, indent=4)
+    consultilla = escuchas.find({'fecha': fecha}, {'numero': 1})
+    return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
 @app.route("/api/2/<numero>/<limite>")
