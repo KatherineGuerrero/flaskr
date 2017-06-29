@@ -59,10 +59,12 @@ def mongo():
     query = request.args.get("query")
     results = eval('mongodb.' + query)
     results = json_util.dumps(results, sort_keys=True, indent=4)
-    if "find" in query:
-        return render_template('mongo.html', results=results)
-    else:
-        return "ok"
+
+    return results
+    # if "find" in query:
+    #     return render_template('mongo.html', results=results)
+    # else:
+    #     return "ok"
 
 
 @app.route("/api/c1/<fecha>")
