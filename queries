@@ -10,5 +10,5 @@
 { "name": "consulta1",
  "database": "mongo",
  "description": "test1",
- "query": "db.escuchas.find({'fecha': '2016-09-12'}, {'numero': 1})" }
+ "query": "escuchas.find({'fecha': '2016-09-12'}, {'numero': 1})" }
   ]
