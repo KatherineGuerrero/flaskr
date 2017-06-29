@@ -72,7 +72,7 @@ def mongo():
 @cross_origin(origin='*')
 def api_1(datos1):
     fecha = datos1
-    consultilla = escuchas.find({'fecha': fecha}, {'numero': 1})
+    consultilla = escuchas.find({'fecha': fecha}, {'numero': 1}).distinct('numero')
     return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
 
