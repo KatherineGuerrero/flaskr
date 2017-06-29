@@ -66,7 +66,7 @@ def mongo():
         return "ok"
 
 
-@app.route("/api/obligado/<consulta>/<datos1>")
+@app.route("/api/<consulta>/<datos1>")
 @cross_origin(origin='*')
 def api(consulta, datos1):
     if consulta == '1':
@@ -78,6 +78,9 @@ def api(consulta, datos1):
     elif consulta == '2':
         numero, limite = datos1.split('?')
         fecha = numero + limite
+        consultilla = mongodb.escuchas.find({'numero': numero}, {'numero': 1, 'contenido': 1})
+        return json_util.dumps(consultilla, sort_keys=True, indent=4)
+
 
     elif consulta == '3':
         clave = datos1
