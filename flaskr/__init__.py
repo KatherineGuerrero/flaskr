@@ -86,6 +86,8 @@ def api_2(numero, limite):
 @app.route("/api/3/<clave>")
 @cross_origin(origin='*')
 def api_3(clave):
+    if '+' in clave:
+        clave = clave.replace('+', ' ')
     consultilla = escuchas.find({'contenido': {'$regex': clave}})
     return json_util.dumps(consultilla, sort_keys=True, indent=4)
 
